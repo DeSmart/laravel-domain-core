@@ -22,5 +22,4 @@ abstract class AbstractEloquentEntity
     {
         return $this->model;
     }
-
 }

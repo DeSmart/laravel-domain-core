@@ -1,6 +1,6 @@
 <?php namespace DeSmart\DomainCore\Repository;
 
-trait BaseEloquentRepositoryTrait 
+trait BaseEloquentRepositoryTrait
 {
 
     /**

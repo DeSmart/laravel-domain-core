@@ -25,7 +25,7 @@ abstract class AbstractEloquentRepository
 
     public function hydrate(Collection $collection)
     {
-        return $collection->map(function($item) {
+        return $collection->map(function ($item) {
             return $this->hydrateItem($item);
         });
     }
