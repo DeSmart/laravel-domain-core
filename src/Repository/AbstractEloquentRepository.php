@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 abstract class AbstractEloquentRepository
 {
 
+    /**
+     * @var \Illuminate\Database\Eloquent\Model
+     */
+    protected $query;
+
     protected function getTranslator()
     {
         return \App::make('DeSmart\DomainCore\EntityTranslatorInterface');
