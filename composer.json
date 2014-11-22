@@ -3,11 +3,11 @@
     "description": "DeSmart core DDD package for Laravel",
     "require": {
         "laracasts/commander": "~1.0",
-        "illuminate/support": "~4.0"
+        "illuminate/support": "~4.0",
+        "illuminate/database": "~4.0"
     },
     "require-dev": {
-        "phpspec/phpspec": "~2.1@dev",
-        "illuminate/database": "~4.0"
+        "phpspec/phpspec": "~2.1@dev"
     },
     "license": "MIT",
     "autoload": {
