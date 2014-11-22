@@ -6,7 +6,7 @@ use Prophecy\Argument;
 use PhpSpec\ObjectBehavior;
 use Illuminate\Database\Eloquent\Model;
 
-class EloquentEntitySpec extends ObjectBehavior
+class EloquentEntityStubSpec extends ObjectBehavior
 {
 
     function let(Model $model)
@@ -16,7 +16,7 @@ class EloquentEntitySpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('DeSmart\DomainCore\Stubs\Entity\EloquentEntity');
+        $this->shouldHaveType('DeSmart\DomainCore\Stubs\Entity\EloquentEntityStub');
         $this->shouldUseTrait('Laracasts\Commander\Events\EventGenerator');
     }
 

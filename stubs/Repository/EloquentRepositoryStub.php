@@ -3,7 +3,7 @@
 use DeSmart\DomainCore\EntityTranslatorInterface;
 use DeSmart\DomainCore\Repository\AbstractEloquentRepository;
 
-class EloquentRepository extends AbstractEloquentRepository
+class EloquentRepositoryStub extends AbstractEloquentRepository
 {
     protected $translator;
 

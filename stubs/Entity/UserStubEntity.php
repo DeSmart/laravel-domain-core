@@ -2,7 +2,6 @@
 
 use DeSmart\DomainCore\Entity\AbstractEloquentEntity;
 
-class EloquentEntity extends AbstractEloquentEntity
+class UserStubEntity extends AbstractEloquentEntity
 {
-    // this stub should stay empty.. 
 }
