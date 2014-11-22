@@ -1,0 +1,28 @@
+{
+    "name": "desmart/laravel-domain-core",
+    "description": "DeSmart core DDD package for Laravel",
+    "require": {
+        "laracasts/commander": "~1.0"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "~2.1@dev",
+        "illuminate/database": "~4"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "DeSmart\\DomainCore\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DeSmart\\DomainCore\\Stubs\\": "stubs/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Radoslaw Mejer",
+            "email": "radmen@desmart.com"
+        }
+    ]
+}

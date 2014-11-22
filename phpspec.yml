@@ -1,0 +1,4 @@
+suites:
+    ddd_suite:
+        namespace: DeSmart\DomainCore
+        psr4_prefix: DeSmart\DomainCore
