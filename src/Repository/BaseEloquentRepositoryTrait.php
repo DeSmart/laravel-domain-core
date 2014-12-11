@@ -1,5 +1,7 @@
 <?php namespace DeSmart\DomainCore\Repository;
 
+use DeSmart\DomainCore\Entity\AbstractEloquentEntity;
+
 trait BaseEloquentRepositoryTrait
 {
 
@@ -44,8 +46,8 @@ trait BaseEloquentRepositoryTrait
      *
      * @param \DeSmart\DomainCore\Entity\AbstractEloquentEntity
      */
-    public function save($entity)
+    public function save(AbstractEloquentEntity $entity)
     {
-        $entity->getModel()->save();
+        $entity->getEloquentModel()->save();
     }
 }

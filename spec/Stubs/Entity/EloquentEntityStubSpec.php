@@ -22,7 +22,7 @@ class EloquentEntityStubSpec extends ObjectBehavior
 
     function it_returns_model(Model $model)
     {
-        $this->getModel()->shouldReturn($model);
+        $this->getEloquentModel()->shouldReturn($model);
     }
 
     public function getMatchers() {

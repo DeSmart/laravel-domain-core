@@ -26,7 +26,7 @@ class EloquentRepositoryStubSpec extends ObjectBehavior
         $hydrated = $this->hydrateItem($user);
 
         $hydrated->shouldHaveType('DeSmart\DomainCore\Stubs\Entity\UserStubEntity');
-        $hydrated->getModel()->shouldReturn($user);
+        $hydrated->getEloquentModel()->shouldReturn($user);
     }
 
     function it_hydrates_collection()
@@ -40,6 +40,6 @@ class EloquentRepositoryStubSpec extends ObjectBehavior
 
         $first = $hydrated_collection->first();
         $first->shouldHaveType('DeSmart\DomainCore\Stubs\Entity\UserStubEntity');
-        $first->getModel()->shouldBe($user);
+        $first->getEloquentModel()->shouldBe($user);
     }
 }

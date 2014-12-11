@@ -18,7 +18,7 @@ abstract class AbstractEloquentEntity
     /**
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function getModel()
+    final public function getEloquentModel()
     {
         return $this->model;
     }
