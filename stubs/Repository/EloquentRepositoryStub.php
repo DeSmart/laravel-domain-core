@@ -1,6 +1,6 @@
 <?php namespace DeSmart\DomainCore\Stubs\Repository;
 
-use DeSmart\DomainCore\EntityTranslatorInterface;
+use DeSmart\DomainCore\Contracts\EntityTranslatorInterface;
 use DeSmart\DomainCore\Repository\AbstractEloquentRepository;
 
 class EloquentRepositoryStub extends AbstractEloquentRepository

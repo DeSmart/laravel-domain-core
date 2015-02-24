@@ -2,9 +2,12 @@
     "name": "desmart/laravel-domain-core",
     "description": "DeSmart core DDD package for Laravel",
     "require": {
-        "laracasts/commander": "~1.0",
-        "illuminate/support": "~4.0",
-        "illuminate/database": "~4.0"
+        "illuminate/support": "~5.0",
+        "illuminate/database": "~5.0",
+        "illuminate/container": "~5.0",
+        "illuminate/bus": "~5.0",
+        "illuminate/log": "~5.0",
+        "illuminate/events": "~5.0"
     },
     "require-dev": {
         "phpspec/phpspec": "~2.1@dev"
@@ -24,6 +27,10 @@
         {
             "name": "Radoslaw Mejer",
             "email": "radmen@desmart.com"
+        },
+        {
+            "name": "Lucjan Wilczewski",
+            "email": "lucjan@desmart.com"
         }
     ]
 }

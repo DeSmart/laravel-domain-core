@@ -17,7 +17,7 @@ class EloquentEntityStubSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType('DeSmart\DomainCore\Stubs\Entity\EloquentEntityStub');
-        $this->shouldUseTrait('Laracasts\Commander\Events\EventGenerator');
+        $this->shouldUseTrait('DeSmart\DomainCore\Events\EventGenerator');
     }
 
     function it_returns_model(Model $model)

@@ -1,4 +1,4 @@
-<?php namespace DeSmart\DomainCore;
+<?php namespace DeSmart\DomainCore\Contracts;
 
 interface EntityTranslatorInterface
 {

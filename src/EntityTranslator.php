@@ -1,5 +1,7 @@
 <?php namespace DeSmart\DomainCore;
 
+use DeSmart\DomainCore\Contracts\EntityTranslatorInterface;
+
 class EntityTranslator implements EntityTranslatorInterface
 {
 

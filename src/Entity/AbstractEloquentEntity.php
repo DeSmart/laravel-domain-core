@@ -1,7 +1,7 @@
 <?php namespace DeSmart\DomainCore\Entity;
 
+use DeSmart\DomainCore\Events\EventGenerator;
 use Illuminate\Database\Eloquent\Model;
-use Laracasts\Commander\Events\EventGenerator;
 
 abstract class AbstractEloquentEntity
 {
