@@ -8,7 +8,8 @@ class BasicCommandMapper implements CommandMapper
 {
     public function toCommandHandler($command)
     {
-        return $command . 'Handler@handle';
+        $commandClassName = get_class($command);
+        return $commandClassName . 'Handler@handle';
     }
 
     public function toCommandValidator($command)
