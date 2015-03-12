@@ -20,7 +20,7 @@ abstract class AbstractEloquentRepository
     {
         $entity_class = $this->getTranslator()->fromModel($item);
 
-        return new $entity_class($item);
+        return is_null($item) ?: new $entity_class($item);
     }
 
     public function hydrate(Collection $collection)
