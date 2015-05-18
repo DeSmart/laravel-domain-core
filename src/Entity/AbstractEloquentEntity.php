@@ -22,4 +22,12 @@ abstract class AbstractEloquentEntity
     {
         return $this->model;
     }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->model->getKey();
+    }
 }
