@@ -15,7 +15,7 @@ class BasicCommandMapperSpec extends ObjectBehavior
     
     function it_translates_command_to_handler()
     {
-        $this->toCommandHandler(new \DeSmart\DomainCore\Stubs\CommandStub())->shouldReturn('DeSmart\DomainCore\Stubs\CommandStubHandler@handle');
+        $this->toCommandHandler(new \DeSmart\DomainCore\Stubs\Commands\CommandStub())->shouldReturn('DeSmart\DomainCore\Stubs\Commands\CommandStubHandler@handle');
     }
     
     function it_translates_command_to_handler_in_commands_namespace()
