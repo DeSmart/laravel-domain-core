@@ -1,8 +1,8 @@
 <?php namespace DeSmart\DomainCore\Events;
 
-use DeSmart\DomainCore\Events\Contracts\Dispatcher as DispatcherInterface;
 use Illuminate\Events\Dispatcher;
-use Illuminate\Log\Writer;
+use Psr\Log\LoggerInterface as Log;
+use DeSmart\DomainCore\Events\Contracts\Dispatcher as DispatcherInterface;
 
 class EventDispatcher implements DispatcherInterface {
 
@@ -26,7 +26,7 @@ class EventDispatcher implements DispatcherInterface {
      * @param Dispatcher $event
      * @param Writer $log
      */
-    function __construct(Dispatcher $event, Writer $log)
+    function __construct(Dispatcher $event, Log $log)
     {
         $this->event = $event;
         $this->log = $log;
