@@ -8,8 +8,12 @@ abstract class AbstractArrayEntity
 
     protected $item;
 
-    public function __construct(array $item)
+    public function __construct($item)
     {
+        if (true === is_string($item)) {
+            $item = json_decode($item, true);
+        }
+
         $this->item = $item;
     }
 
