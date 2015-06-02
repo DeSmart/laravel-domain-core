@@ -4,6 +4,7 @@ use Illuminate\Support\Collection;
 
 abstract class AbstractApiRepository
 {
+    protected $entityClassName;
 
     public function hydrateItem(array $item, $entityClassName = null)
     {
@@ -19,5 +20,10 @@ abstract class AbstractApiRepository
         return $collection->map(function ($item) use($entityClassName) {
             return $this->hydrateItem($item, $entityClassName);
         });
+    }
+
+    private function getEntityClassName()
+    {
+        return $this->entityClassName;
     }
 }
