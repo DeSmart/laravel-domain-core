@@ -42,6 +42,28 @@ trait BaseEloquentRepositoryTrait
     }
 
     /**
+     * Find records by given key
+     *
+     * @param string $field
+     * @param mixed $value
+     * @param string $orderByField
+     * @param string $orderDirection
+     * @return \Illuminate\Support\Collection
+     */
+    public function findAllBy($field, $value, $orderByField = null, $orderDirection = 'asc')
+    {
+        $items = $this->query->where($field, $value);
+
+        if(false === empty($orderByField)){
+            $items = $items->orderBy($orderByField, $orderDirection);
+        }
+
+        $items = $items->get();
+
+        return $items->isEmpty() ? null : $this->hydrate($items);
+    }
+
+    /**
      * Store record in DB
      *
      * @param \DeSmart\DomainCore\Entity\AbstractEloquentEntity
