@@ -2,7 +2,7 @@
 
 namespace spec\DeSmart\DomainCore;
 
-use DeSmart\DomainCore\Stubs\CommandStub;
+use DeSmart\DomainCore\Stubs\Commands\CommandStub;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -15,12 +15,12 @@ class BasicCommandMapperSpec extends ObjectBehavior
     
     function it_translates_command_to_handler()
     {
-        $this->toCommandHandler(new \DeSmart\DomainCore\Stubs\Commands\CommandStub())->shouldReturn('DeSmart\DomainCore\Stubs\Commands\CommandStubHandler@handle');
+        $this->toCommandHandler(new CommandStub())->shouldReturn('DeSmart\DomainCore\Stubs\Commands\CommandStubHandler@handle');
     }
     
     function it_translates_command_to_handler_in_commands_namespace()
     {
-        $this->toCommandHandler(new \DeSmart\DomainCore\Stubs\Commands\CommandStub())->shouldReturn('DeSmart\DomainCore\Stubs\Commands\CommandStubHandler@handle');
+        $this->toCommandHandler(new CommandStub())->shouldReturn('DeSmart\DomainCore\Stubs\Commands\CommandStubHandler@handle');
     }
     
     function it_translates_command_to_validator()
