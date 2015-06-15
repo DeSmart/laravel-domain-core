@@ -6,7 +6,7 @@ abstract class AbstractApiRepository
 {
     protected $entityClassName;
 
-    public function hydrateItem(array $item, $entityClassName = null)
+    public function hydrateItem(array $item)
     {
         if (null == $entityClassName) {
             $entityClassName = $this->getEntityClassName();
@@ -15,14 +15,18 @@ abstract class AbstractApiRepository
         return new $entityClassName($item);
     }
 
-    public function hydrate(Collection $collection, $entityClassName)
+    public function hydrate(Collection $collection, $entityClassName = null)
     {
+        if (null == $entityClassName) {
+            $entityClassName = $this->getEntityClassName();
+        }
+
         return $collection->map(function ($item) use($entityClassName) {
             return $this->hydrateItem($item, $entityClassName);
         });
     }
 
-    private function getEntityClassName()
+    public function getEntityClassName()
     {
         return $this->entityClassName;
     }

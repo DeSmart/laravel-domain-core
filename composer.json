@@ -8,6 +8,7 @@
         "illuminate/bus": "~5.0",
         "illuminate/log": "~5.0",
         "illuminate/events": "~5.0",
+        "netresearch/jsonmapper": "dev-master",
         "psr/log": "^1.0"
     },
     "require-dev": {
