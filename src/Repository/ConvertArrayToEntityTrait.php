@@ -13,7 +13,11 @@ trait ConvertArrayToEntityTrait
     }
 
     /**
-     * @param $entity
+     * @param $item
+     *
+     * @return object
+     * @throws \JsonMapper_Exception
+     * @internal param $entity
      */
     public function wrapArrayToEntity($item)
     {

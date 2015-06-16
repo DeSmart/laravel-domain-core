@@ -8,21 +8,33 @@ abstract class AbstractApiRepository
 
     public function hydrateItem(array $item)
     {
-        if (null == $entityClassName) {
-            $entityClassName = $this->getEntityClassName();
-        }
-
-        return new $entityClassName($item);
+        return $this->toEntity($item);
     }
 
-    public function hydrate(Collection $collection, $entityClassName = null)
+    public function toEntity($item)
     {
-        if (null == $entityClassName) {
-            $entityClassName = $this->getEntityClassName();
-        }
+        return $this->wrapArrayToEntity($item);
+    }
 
-        return $collection->map(function ($item) use($entityClassName) {
-            return $this->hydrateItem($item, $entityClassName);
+    /**
+     * @param $item
+     *
+     * @return object
+     * @throws \JsonMapper_Exception
+     * @internal param $entity
+     */
+    public function wrapArrayToEntity($item)
+    {
+        $jsonMapper = new \JsonMapper();
+        $entityClassName = $this->getEntityClassName();
+
+        return $jsonMapper->map($item, new $entityClassName());
+    }
+
+    public function hydrate(Collection $collection)
+    {
+        return $collection->map(function ($item) {
+            return $this->hydrateItem($item);
         });
     }
 
