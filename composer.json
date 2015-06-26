@@ -3,7 +3,6 @@
     "description": "DeSmart core DDD package for Laravel",
     "require": {
         "illuminate/support": "~5.0",
-        "illuminate/database": "~5.0",
         "illuminate/container": "~5.0",
         "illuminate/bus": "~5.0",
         "illuminate/log": "~5.0",
