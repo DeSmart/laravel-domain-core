@@ -39,4 +39,13 @@ class RepositoryStubSpec extends ObjectBehavior
         $entities[0]->getName()->shouldReturn('Jon');
         $entities[1]->getName()->shouldReturn('Bob');
     }
+
+    function it_throws_exception_when_items_in_collection_dont_convert_to_entity()
+    {
+        $this->beConstructedWith([
+            new \stdClass,
+        ]);
+
+        $this->shouldThrow(new \InvalidArgumentException('Items need to convert to entity'))->duringFromArray();
+    }
 }

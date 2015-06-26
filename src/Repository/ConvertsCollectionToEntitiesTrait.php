@@ -12,6 +12,10 @@ trait ConvertsCollectionToEntitiesTrait
             $collection = $collection->toArray();
         }
 
+        if (false === empty($collection) && false === method_exists(current($collection), 'toEntity')) {
+            throw new \InvalidArgumentException('Items need to convert to entity');
+        }
+
         return array_map(
             function ($item) {
                 return $item->toEntity();
