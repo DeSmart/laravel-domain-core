@@ -1,36 +1,44 @@
 {
-    "name": "desmart/laravel-domain-core",
-    "description": "DeSmart core DDD package for Laravel",
-    "require": {
-        "illuminate/support": "~5.1",
-        "illuminate/container": "~5.1",
-        "illuminate/log": "~5.1",
-        "illuminate/events": "~5.1",
-        "netresearch/jsonmapper": "dev-master",
-        "psr/log": "^1.0"
+  "name": "desmart/laravel-domain-core",
+  "description": "DeSmart core DDD package for Laravel",
+  "require": {
+    "illuminate/support": "~5.1",
+    "illuminate/container": "~5.1",
+    "illuminate/log": "~5.1",
+    "illuminate/events": "~5.1",
+    "netresearch/jsonmapper": "dev-master",
+    "psr/log": "^1.0"
+  },
+  "require-dev": {
+    "phpspec/phpspec": "~2.1@dev"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "DeSmart\\DomainCore\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "DeSmart\\DomainCore\\Stubs\\": "stubs/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Radoslaw Mejer",
+      "email": "radmen@desmart.com"
     },
-    "require-dev": {
-        "phpspec/phpspec": "~2.1@dev"
+    {
+      "name": "Lucjan Wilczewski",
+      "email": "lucjan@desmart.com"
     },
-    "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "DeSmart\\DomainCore\\": "src/"
-        }
+    {
+      "name": "Michał Golom",
+      "email": "gollum@desmart.com"
     },
-    "autoload-dev": {
-        "psr-4": {
-            "DeSmart\\DomainCore\\Stubs\\": "stubs/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Radoslaw Mejer",
-            "email": "radmen@desmart.com"
-        },
-        {
-            "name": "Lucjan Wilczewski",
-            "email": "lucjan@desmart.com"
-        }
-    ]
+    {
+      "name": "Kamil Piechaczek",
+      "email": "pomek@desmart.com"
+    }
+  ]
 }
