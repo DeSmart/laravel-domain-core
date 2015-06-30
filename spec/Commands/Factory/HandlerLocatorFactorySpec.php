@@ -16,7 +16,7 @@ class HandlerLocatorFactorySpec extends ObjectBehavior
     public function it_is_initializable()
     {
         $this->shouldHaveType('DeSmart\DomainCore\Commands\Factory\HandlerLocatorFactory');
-        $this->shouldImplement('DeSmart\DomainCore\Commands\Contracts\HandlerLocator');
+        $this->shouldImplement('DeSmart\DomainCore\Commands\Factory\Contracts\HandlerLocator');
     }
 
     public function it_should_return_handler_class_instance(Container $app, RegisterUserHandler $handler) {

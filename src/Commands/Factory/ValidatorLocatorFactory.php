@@ -1,6 +1,6 @@
 <?php namespace DeSmart\DomainCore\Commands\Factory;
 
-use DeSmart\DomainCore\Commands\Contracts\ValidatorLocator;
+use DeSmart\DomainCore\Commands\Factory\Contracts\ValidatorLocator;
 use Illuminate\Contracts\Container\Container;
 
 class ValidatorLocatorFactory implements ValidatorLocator

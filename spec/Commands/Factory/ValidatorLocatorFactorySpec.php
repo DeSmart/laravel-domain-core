@@ -16,7 +16,7 @@ class ValidatorLocatorFactorySpec extends ObjectBehavior
     public function it_is_initializable()
     {
         $this->shouldHaveType('DeSmart\DomainCore\Commands\Factory\ValidatorLocatorFactory');
-        $this->shouldImplement('DeSmart\DomainCore\Commands\Contracts\ValidatorLocator');
+        $this->shouldImplement('DeSmart\DomainCore\Commands\Factory\Contracts\ValidatorLocator');
     }
 
     public function it_should_return_validator_class_instance(Container $app, RegisterUserValidator $validator) {

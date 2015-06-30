@@ -1,7 +1,7 @@
 <?php namespace DeSmart\DomainCore\Commands\Factory;
 
-use DeSmart\DomainCore\Commands\Contracts\HandlerLocator;
 use DeSmart\DomainCore\Commands\Exceptions\MissingHandlerException;
+use DeSmart\DomainCore\Commands\Factory\Contracts\HandlerLocator;
 use Illuminate\Contracts\Container\Container;
 
 class HandlerLocatorFactory implements HandlerLocator

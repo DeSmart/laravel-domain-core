@@ -1,4 +1,4 @@
-<?php namespace DeSmart\DomainCore\Commands\Contracts;
+<?php namespace DeSmart\DomainCore\Commands\Factory\Contracts;
 
 interface HandlerLocator
 {
