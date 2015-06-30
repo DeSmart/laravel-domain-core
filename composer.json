@@ -7,8 +7,7 @@
         "illuminate/log": "~5.1",
         "illuminate/events": "~5.1",
         "netresearch/jsonmapper": "dev-master",
-        "psr/log": "^1.0",
-        "league/tactician": "^0.6.0"
+        "psr/log": "^1.0"
     },
     "require-dev": {
         "phpspec/phpspec": "~2.1@dev"
