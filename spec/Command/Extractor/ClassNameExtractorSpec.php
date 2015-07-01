@@ -1,4 +1,4 @@
-<?php namespace spec\DeSmart\DomainCore\Commands\Extractor;
+<?php namespace spec\DeSmart\DomainCore\Command\Extractor;
 
 use DeSmart\DomainCore\Stubs\RegisterUserCommand;
 use PhpSpec\ObjectBehavior;
@@ -8,8 +8,8 @@ class ClassNameExtractorSpec extends ObjectBehavior
 {
     public function it_is_initializable()
     {
-        $this->shouldHaveType('DeSmart\DomainCore\Commands\Extractor\ClassNameExtractor');
-        $this->shouldImplement('DeSmart\DomainCore\Commands\Extractor\Contracts\CommandNameExtractor');
+        $this->shouldHaveType('DeSmart\DomainCore\Command\Extractor\ClassNameExtractor');
+        $this->shouldImplement('DeSmart\DomainCore\Command\Extractor\Contracts\CommandNameExtractor');
     }
 
     public function it_return_class_name()

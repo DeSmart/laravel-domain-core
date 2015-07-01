@@ -1,11 +1,11 @@
-<?php namespace spec\DeSmart\DomainCore\Commands;
+<?php namespace spec\DeSmart\DomainCore\Command;
 
-use DeSmart\DomainCore\Commands\Extractor\Contracts\CommandNameExtractor;
-use DeSmart\DomainCore\Commands\Factory\Contracts\HandlerLocator;
-use DeSmart\DomainCore\Commands\Factory\Contracts\ValidatorLocator;
+use DeSmart\DomainCore\Command\Extractor\Contracts\CommandNameExtractor;
+use DeSmart\DomainCore\Command\Factory\Contracts\HandlerLocator;
+use DeSmart\DomainCore\Command\Factory\Contracts\ValidatorLocator;
 use DeSmart\DomainCore\Stubs\RegisterUserCommand;
-use DeSmart\DomainCore\Stubs\RegisterUserHandler;
-use DeSmart\DomainCore\Stubs\RegisterUserValidator;
+use DeSmart\DomainCore\Stubs\RegisterUserCommandHandler;
+use DeSmart\DomainCore\Stubs\RegisterUserCommandValidator;
 use Illuminate\Contracts\Container\Container;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -19,24 +19,24 @@ class CommandBusSpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType('DeSmart\DomainCore\Commands\CommandBus');
-        $this->shouldImplement('DeSmart\DomainCore\Commands\Contracts\CommandBus');
+        $this->shouldHaveType('DeSmart\DomainCore\Command\CommandBus');
+        $this->shouldImplement('DeSmart\DomainCore\Command\Contracts\CommandBus');
     }
 
     public function it_should_make_handler_and_validator(
         Container $app,
         RegisterUserCommand $command,
-        RegisterUserHandler $handler,
-        RegisterUserValidator $validator,
+        RegisterUserCommandHandler $handler,
+        RegisterUserCommandValidator $validator,
         HandlerLocator $handlerLocator,
         ValidatorLocator $validatorLocator,
         CommandNameExtractor $commandNameExtractor
     ) {
-        $app->make('DeSmart\DomainCore\Commands\Factory\Contracts\ValidatorLocator')
+        $app->make('DeSmart\DomainCore\Command\Factory\Contracts\ValidatorLocator')
             ->willReturn($validatorLocator);
-        $app->make('DeSmart\DomainCore\Commands\Factory\Contracts\HandlerLocator')
+        $app->make('DeSmart\DomainCore\Command\Factory\Contracts\HandlerLocator')
             ->willReturn($handlerLocator);
-        $app->make('DeSmart\DomainCore\Commands\Extractor\Contracts\CommandNameExtractor')
+        $app->make('DeSmart\DomainCore\Command\Extractor\Contracts\CommandNameExtractor')
             ->willReturn($commandNameExtractor);
 
         $command_name = 'ExampleName';
@@ -54,16 +54,16 @@ class CommandBusSpec extends ObjectBehavior
     public function it_should_make_only_handler(
         Container $app,
         RegisterUserCommand $command,
-        RegisterUserHandler $handler,
+        RegisterUserCommandHandler $handler,
         HandlerLocator $handlerLocator,
         ValidatorLocator $validatorLocator,
         CommandNameExtractor $commandNameExtractor
     ) {
-        $app->make('DeSmart\DomainCore\Commands\Factory\Contracts\ValidatorLocator')
+        $app->make('DeSmart\DomainCore\Command\Factory\Contracts\ValidatorLocator')
             ->willReturn($validatorLocator);
-        $app->make('DeSmart\DomainCore\Commands\Factory\Contracts\HandlerLocator')
+        $app->make('DeSmart\DomainCore\Command\Factory\Contracts\HandlerLocator')
             ->willReturn($handlerLocator);
-        $app->make('DeSmart\DomainCore\Commands\Extractor\Contracts\CommandNameExtractor')
+        $app->make('DeSmart\DomainCore\Command\Extractor\Contracts\CommandNameExtractor')
             ->willReturn($commandNameExtractor);
 
         $command_name = 'ExampleName';

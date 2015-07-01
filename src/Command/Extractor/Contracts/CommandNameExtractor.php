@@ -1,4 +1,4 @@
-<?php namespace DeSmart\DomainCore\Commands\Extractor\Contracts;
+<?php namespace DeSmart\DomainCore\Command\Extractor\Contracts;
 
 interface CommandNameExtractor
 {

@@ -1,6 +1,6 @@
-<?php namespace DeSmart\DomainCore\Commands\Factory;
+<?php namespace DeSmart\DomainCore\Command\Factory;
 
-use DeSmart\DomainCore\Commands\Factory\Contracts\ValidatorLocator;
+use DeSmart\DomainCore\Command\Factory\Contracts\ValidatorLocator;
 use Illuminate\Contracts\Container\Container;
 
 class ValidatorLocatorFactory implements ValidatorLocator
@@ -23,7 +23,7 @@ class ValidatorLocatorFactory implements ValidatorLocator
      */
     public function getValidatorForCommand($commandName)
     {
-        $class_name = preg_replace('/Command$/', 'Validator', $commandName);
+        $class_name = sprintf('%sValidator', $commandName);
 
         if (false === class_exists($class_name)) {
             return null;

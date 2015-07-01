@@ -1,9 +1,9 @@
 <?php namespace DeSmart\DomainCore\Stubs; 
 
-class RegisterUserValidator 
+class RegisterUserCommandValidator
 {
     public function validate(RegisterUserCommand $command)
     {
-        // todo: do awesome stuff...
+        // do awesome stuff...
     }
 }

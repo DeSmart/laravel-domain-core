@@ -1,6 +1,6 @@
-<?php namespace DeSmart\DomainCore\Commands;
+<?php namespace DeSmart\DomainCore\Command;
 
-use DeSmart\DomainCore\Commands\Contracts\CommandBus as CommandBusInterface;
+use DeSmart\DomainCore\Command\Contracts\CommandBus as CommandBusInterface;
 use Illuminate\Contracts\Container\Container;
 
 class CommandBus implements CommandBusInterface
@@ -37,7 +37,7 @@ class CommandBus implements CommandBusInterface
      */
     private function getValidatorForCommand($command)
     {
-        $factory = $this->app->make('DeSmart\DomainCore\Commands\Factory\Contracts\ValidatorLocator');
+        $factory = $this->app->make('DeSmart\DomainCore\Command\Factory\Contracts\ValidatorLocator');
 
         return $factory->getValidatorForCommand($command);
     }
@@ -50,7 +50,7 @@ class CommandBus implements CommandBusInterface
      */
     private function getHandlerForCommand($command)
     {
-        $factory = $this->app->make('DeSmart\DomainCore\Commands\Factory\Contracts\HandlerLocator');
+        $factory = $this->app->make('DeSmart\DomainCore\Command\Factory\Contracts\HandlerLocator');
 
         return $factory->getHandlerForCommand($command);
     }
@@ -63,7 +63,7 @@ class CommandBus implements CommandBusInterface
      */
     private function getClassName($command)
     {
-        $extractor = $this->app->make('DeSmart\DomainCore\Commands\Extractor\Contracts\CommandNameExtractor');
+        $extractor = $this->app->make('DeSmart\DomainCore\Command\Extractor\Contracts\CommandNameExtractor');
 
         return $extractor->extract($command);
     }

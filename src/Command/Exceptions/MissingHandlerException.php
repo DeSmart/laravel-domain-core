@@ -1,4 +1,4 @@
-<?php namespace DeSmart\DomainCore\Commands\Exceptions;
+<?php namespace DeSmart\DomainCore\Command\Exceptions;
 
 class MissingHandlerException extends \RuntimeException
 {

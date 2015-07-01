@@ -1,6 +1,6 @@
-<?php namespace DeSmart\DomainCore\Commands\Extractor;
+<?php namespace DeSmart\DomainCore\Command\Extractor;
 
-use DeSmart\DomainCore\Commands\Extractor\Contracts\CommandNameExtractor;
+use DeSmart\DomainCore\Command\Extractor\Contracts\CommandNameExtractor;
 
 class ClassNameExtractor implements CommandNameExtractor
 {

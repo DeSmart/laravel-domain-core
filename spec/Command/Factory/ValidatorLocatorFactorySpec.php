@@ -1,7 +1,7 @@
-<?php namespace spec\DeSmart\DomainCore\Commands\Factory;
+<?php namespace spec\DeSmart\DomainCore\Command\Factory;
 
 use DeSmart\DomainCore\Stubs\RegisterUserCommand;
-use DeSmart\DomainCore\Stubs\RegisterUserValidator;
+use DeSmart\DomainCore\Stubs\RegisterUserCommandValidator;
 use Illuminate\Contracts\Container\Container;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -15,12 +15,12 @@ class ValidatorLocatorFactorySpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType('DeSmart\DomainCore\Commands\Factory\ValidatorLocatorFactory');
-        $this->shouldImplement('DeSmart\DomainCore\Commands\Factory\Contracts\ValidatorLocator');
+        $this->shouldHaveType('DeSmart\DomainCore\Command\Factory\ValidatorLocatorFactory');
+        $this->shouldImplement('DeSmart\DomainCore\Command\Factory\Contracts\ValidatorLocator');
     }
 
-    public function it_should_return_validator_class_instance(Container $app, RegisterUserValidator $validator) {
-        $class_name = preg_replace('/Command$/', 'Validator', RegisterUserCommand::class);
+    public function it_should_return_validator_class_instance(Container $app, RegisterUserCommandValidator $validator) {
+        $class_name = sprintf('%sValidator', RegisterUserCommand::class);
         $app->make($class_name)->willReturn($validator)->shouldBeCalled();
 
         $this->getValidatorForCommand(RegisterUserCommand::class)->shouldBe($validator);

@@ -1,7 +1,7 @@
-<?php namespace DeSmart\DomainCore\Commands\Factory;
+<?php namespace DeSmart\DomainCore\Command\Factory;
 
-use DeSmart\DomainCore\Commands\Exceptions\MissingHandlerException;
-use DeSmart\DomainCore\Commands\Factory\Contracts\HandlerLocator;
+use DeSmart\DomainCore\Command\Exceptions\MissingHandlerException;
+use DeSmart\DomainCore\Command\Factory\Contracts\HandlerLocator;
 use Illuminate\Contracts\Container\Container;
 
 class HandlerLocatorFactory implements HandlerLocator
@@ -22,11 +22,11 @@ class HandlerLocatorFactory implements HandlerLocator
      * @param string $commandName
      * @return object
      *
-     * @throws \DeSmart\DomainCore\Commands\Exceptions\MissingHandlerException
+     * @throws \DeSmart\DomainCore\Command\Exceptions\MissingHandlerException
      */
     public function getHandlerForCommand($commandName)
     {
-        $class_name = preg_replace('/Command$/', 'Handler', $commandName);
+        $class_name = sprintf('%sHandler', $commandName);
 
         if (false === class_exists($class_name)) {
             throw new MissingHandlerException("Class $class_name does not exist!");

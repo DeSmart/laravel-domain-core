@@ -1,4 +1,4 @@
-<?php namespace DeSmart\DomainCore\Commands\Factory\Contracts;
+<?php namespace DeSmart\DomainCore\Command\Factory\Contracts;
 
 interface HandlerLocator
 {
@@ -8,7 +8,7 @@ interface HandlerLocator
      * @param string $commandName
      * @return object
      *
-     * @throws \DeSmart\DomainCore\Commands\Exceptions\MissingHandlerException
+     * @throws \DeSmart\DomainCore\Command\Exceptions\MissingHandlerException
      */
     public function getHandlerForCommand($commandName);
 }

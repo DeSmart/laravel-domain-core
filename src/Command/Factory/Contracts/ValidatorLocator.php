@@ -1,4 +1,4 @@
-<?php namespace DeSmart\DomainCore\Commands\Factory\Contracts;
+<?php namespace DeSmart\DomainCore\Command\Factory\Contracts;
 
 interface ValidatorLocator 
 {
