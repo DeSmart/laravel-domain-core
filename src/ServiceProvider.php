@@ -1,14 +1,11 @@
 <?php namespace DeSmart\DomainCore;
 
-use DeSmart\DomainCore\Commands\LocatorHandlerFactory;
-use Illuminate\Bus\Dispatcher;
-use Illuminate\Container\Container;
+use DeSmart\DomainCore\Contracts\EntityTranslatorInterface;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
-
     public function register()
     {
-        $this->app->bind('DeSmart\DomainCore\EntityTranslatorInterface', 'DeSmart\DomainCore\EntityTranslator');
+        $this->app->bind(EntityTranslatorInterface::class, EntityTranslator::class);
     }
 }
