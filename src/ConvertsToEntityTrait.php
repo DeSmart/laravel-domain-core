@@ -20,6 +20,8 @@ trait ConvertsToEntityTrait
         $className = $this->getEntityClassName();
         $mapper = new \JsonMapper;
 
-        return $mapper->map($data ?: $this->toArray(), new $className);
+        $data = (object)($data ?: $this->toArray());
+
+        return $mapper->map($data, new $className);
     }
 }
