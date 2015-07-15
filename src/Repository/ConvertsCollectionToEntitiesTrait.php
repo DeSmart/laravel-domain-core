@@ -9,7 +9,7 @@ trait ConvertsCollectionToEntitiesTrait
     {
 
         if (true === $collection instanceof Collection) {
-            $collection = $collection->toArray();
+            $collection = $collection->all();
         }
 
         if (false === empty($collection) && false === method_exists(current($collection), 'toEntity')) {
