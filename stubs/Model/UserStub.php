@@ -15,6 +15,8 @@ class UserStub
 
     public $lastname;
 
+    public $relations = [];
+
     public function __construct($name = null, $lastname = null)
     {
         $this->name = $name;
@@ -27,5 +29,13 @@ class UserStub
             'name' => $this->name,
             'lastname' => $this->lastname
         ];
+    }
+
+    /**
+     * @param array $relations
+     */
+    public function setRelations(array $relations)
+    {
+        $this->relations = $relations;
     }
 }

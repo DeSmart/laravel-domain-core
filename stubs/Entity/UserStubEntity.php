@@ -14,6 +14,16 @@ class UserStubEntity
     protected $lastname;
 
     /**
+     * @var UserCommentStubEntity[]
+     */
+    protected $messages = [];
+
+    /**
+     * @var UserCommentStubEntity
+     */
+    protected $sentMessage;
+
+    /**
      * @return string
      */
     public function getName()
@@ -43,5 +53,34 @@ class UserStubEntity
     public function setLastname($lastname)
     {
         $this->lastname = $lastname;
+    }
+
+    public function setMessages(UserCommentStubEntity ...$messages)
+    {
+        $this->messages = $messages;
+    }
+
+    /**
+     * @return UserCommentStubEntity[]
+     */
+    public function getMessages()
+    {
+        return $this->messages;
+    }
+
+    /**
+     * @param UserCommentStubEntity $sentMessage
+     */
+    public function setSentMessage(UserCommentStubEntity $sentMessage)
+    {
+        $this->sentMessage = $sentMessage;
+    }
+
+    /**
+     * @return UserCommentStubEntity
+     */
+    public function getSentMessage()
+    {
+        return $this->sentMessage;
     }
 }
