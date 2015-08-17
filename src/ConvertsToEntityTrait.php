@@ -22,7 +22,7 @@ trait ConvertsToEntityTrait
         $mapper = new \JsonMapper;
 
         if (null === $data) {
-            $data = array_diff_key($this->toArray(), $this->relations);
+            $data = $this->toArrayWithoutRelations();
         }
 
         $data = (object) $data;
@@ -31,6 +31,11 @@ trait ConvertsToEntityTrait
         $this->mapEntityRelationships($entity);
 
         return $entity;
+    }
+
+    protected function toArrayWithoutRelations()
+    {
+        return array_diff_key($this->toArray(), $this->relations);
     }
 
     protected function mapEntityRelationships($entity)
