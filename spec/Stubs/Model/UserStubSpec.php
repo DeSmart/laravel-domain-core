@@ -5,6 +5,7 @@ namespace spec\DeSmart\DomainCore\Stubs\Model;
 use Prophecy\Argument;
 use PhpSpec\ObjectBehavior;
 use Illuminate\Support\Collection;
+use DeSmart\DomainCore\Stubs\CommentWrapper;
 use DeSmart\DomainCore\Stubs\Model\UserCommentStub;
 use DeSmart\DomainCore\Stubs\Entity\UserStubEntity;
 use DeSmart\DomainCore\Stubs\Entity\UserCommentStubEntity;
@@ -76,5 +77,17 @@ class UserStubSpec extends ObjectBehavior
         $entity->getMessages()[0]->getMessage('test');
         $entity->getMessages()[1]->shouldHaveType(UserCommentStubEntity::class);
         $entity->getMessages()[1]->getMessage('test1');
+    }
+
+    function it_converts_relationship_with_custom_mapper()
+    {
+        $this->setRelations([
+            'wrappedComment' => $comment = new UserCommentStub('test'),
+        ]);
+
+        $entity = $this->toEntity();
+        $wrappedComment = $entity->getWrappedComment();
+        $wrappedComment->shouldHaveType(CommentWrapper::class);
+        $wrappedComment->getComment()->shouldReturn($comment);
     }
 }

@@ -43,17 +43,33 @@ trait ConvertsToEntityTrait
         foreach ($this->relations as $name => $relations) {
             $uppercase = ucfirst($name);
             $method = 'set'.$uppercase;
+            $mapperMethod = $name.'ToEntity';
 
-            if (true === $relations instanceof Collection) {
-                $relations = $relations->map(function ($item) {
-                    return $item->toEntity();
-                });
+            // if there's no custom entity factories use the generic one
+            if (false === method_exists($this, $mapperMethod)) {
+                $mapperMethod = 'relationsToEntity';
+            }
 
+            $relations = $this->$mapperMethod($relations, $entity);
+
+            if (true === is_array($relations) || true === $relations instanceof \Traversable) {
                 $entity->$method(...$relations);
             } else {
-                $entity->$method($relations->toEntity());
+                $entity->$method($relations);
             }
         }
+    }
+
+    protected function relationsToEntity($items)
+    {
+        if (true === $items instanceof Collection) {
+
+            return $items->map(function ($item) {
+                return $item->toEntity();
+            });
+        }
+
+        return $items->toEntity();
     }
 
     protected function toArrayWithoutRelations()

@@ -1,5 +1,6 @@
 <?php namespace DeSmart\DomainCore\Stubs\Model;
 
+use DeSmart\DomainCore\Stubs\CommentWrapper;
 use DeSmart\DomainCore\ConvertsToEntityTrait;
 
 class UserStub
@@ -37,5 +38,10 @@ class UserStub
     public function setRelations(array $relations)
     {
         $this->relations = $relations;
+    }
+
+    protected function wrappedCommentToEntity(UserCommentStub $comment)
+    {
+        return new CommentWrapper($comment);
     }
 }

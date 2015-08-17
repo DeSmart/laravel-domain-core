@@ -1,5 +1,7 @@
 <?php namespace DeSmart\DomainCore\Stubs\Entity;
 
+use DeSmart\DomainCore\Stubs\CommentWrapper;
+
 class UserStubEntity
 {
 
@@ -22,6 +24,11 @@ class UserStubEntity
      * @var UserCommentStubEntity
      */
     protected $sentMessage;
+
+    /**
+     * @var CommentWrapper
+     */
+    protected $wrappedComment;
 
     /**
      * @return string
@@ -82,5 +89,21 @@ class UserStubEntity
     public function getSentMessage()
     {
         return $this->sentMessage;
+    }
+
+    /**
+     * @return CommentWrapper
+     */
+    public function getWrappedComment()
+    {
+        return $this->wrappedComment;
+    }
+    
+    /**
+     * @param CommentWrapper $wrappedComment
+     */
+    public function setWrappedComment(CommentWrapper $wrappedComment)
+    {
+        $this->wrappedComment = $wrappedComment;
     }
 }
