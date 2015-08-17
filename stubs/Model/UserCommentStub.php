@@ -13,7 +13,7 @@ class UserCommentStub
 
     public $entityClassName;
 
-    public $relations;
+    public $relations = [];
 
     public function __construct($message)
     {
