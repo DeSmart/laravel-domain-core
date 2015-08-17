@@ -4,7 +4,11 @@ namespace spec\DeSmart\DomainCore\Stubs\Model;
 
 use Prophecy\Argument;
 use PhpSpec\ObjectBehavior;
+use Illuminate\Support\Collection;
+use DeSmart\DomainCore\Stubs\CommentWrapper;
+use DeSmart\DomainCore\Stubs\Model\UserCommentStub;
 use DeSmart\DomainCore\Stubs\Entity\UserStubEntity;
+use DeSmart\DomainCore\Stubs\Entity\UserCommentStubEntity;
 
 class UserStubSpec extends ObjectBehavior
 {
@@ -46,5 +50,44 @@ class UserStubSpec extends ObjectBehavior
         $entity->shouldHaveType(UserStubEntity::class);
         $entity->getName()->shouldReturn('Jon');
         $entity->getLastname()->shouldReturn('Snow');
+    }
+
+    function it_converts_one_to_one_relationship()
+    {
+        $this->setRelations([
+            'sentMessage' => new UserCommentStub('test'),
+        ]);
+
+        $entity = $this->toEntity();
+        $entity->getSentMessage()->shouldHaveType(UserCommentStubEntity::class);
+        $entity->getSentMessage()->getMessage()->shouldReturn('test');
+    }
+
+    function it_converts_one_to_many_relationships()
+    {
+        $this->setRelations([
+            'messages' => new Collection([
+                new UserCommentStub('test'),
+                new UserCommentStub('test1'),
+            ]),
+        ]);
+
+        $entity = $this->toEntity();
+        $entity->getMessages()[0]->shouldHaveType(UserCommentStubEntity::class);
+        $entity->getMessages()[0]->getMessage('test');
+        $entity->getMessages()[1]->shouldHaveType(UserCommentStubEntity::class);
+        $entity->getMessages()[1]->getMessage('test1');
+    }
+
+    function it_converts_relationship_with_custom_mapper()
+    {
+        $this->setRelations([
+            'wrappedComment' => $comment = new UserCommentStub('test'),
+        ]);
+
+        $entity = $this->toEntity();
+        $wrappedComment = $entity->getWrappedComment();
+        $wrappedComment->shouldHaveType(CommentWrapper::class);
+        $wrappedComment->getComment()->shouldReturn($comment);
     }
 }
