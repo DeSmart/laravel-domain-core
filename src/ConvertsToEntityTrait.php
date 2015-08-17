@@ -35,7 +35,7 @@ trait ConvertsToEntityTrait
 
     protected function toArrayWithoutRelations()
     {
-        return array_diff_key($this->toArray(), $this->relations);
+        return array_diff_key($this->toArray(), $this->relationsToArray());
     }
 
     protected function mapEntityRelationships($entity)

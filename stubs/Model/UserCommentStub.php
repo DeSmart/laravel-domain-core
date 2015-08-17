@@ -24,4 +24,9 @@ class UserCommentStub
     {
         return ['message' => $this->message];
     }
+
+    protected function relationsToArray()
+    {
+        return $this->relations;
+    }
 }

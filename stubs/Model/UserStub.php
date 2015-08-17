@@ -32,6 +32,11 @@ class UserStub
         ];
     }
 
+    protected function relationsToArray()
+    {
+        return $this->relations;
+    }
+
     /**
      * @param array $relations
      */
