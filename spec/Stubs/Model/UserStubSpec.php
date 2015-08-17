@@ -6,6 +6,7 @@ use Prophecy\Argument;
 use PhpSpec\ObjectBehavior;
 use Illuminate\Support\Collection;
 use DeSmart\DomainCore\Stubs\CommentWrapper;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 use DeSmart\DomainCore\Stubs\Model\UserCommentStub;
 use DeSmart\DomainCore\Stubs\Entity\UserStubEntity;
 use DeSmart\DomainCore\Stubs\Entity\UserCommentStubEntity;
@@ -89,5 +90,15 @@ class UserStubSpec extends ObjectBehavior
         $wrappedComment = $entity->getWrappedComment();
         $wrappedComment->shouldHaveType(CommentWrapper::class);
         $wrappedComment->getComment()->shouldReturn($comment);
+    }
+
+    function it_skips_pivots(Pivot $pivot)
+    {
+        $this->setRelations([
+            'messages' => $pivot,
+        ]);
+
+        // it's enough - Pivot shouldnt be casted to entity
+        $this->toEntity();
     }
 }

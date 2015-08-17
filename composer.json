@@ -8,7 +8,8 @@
     "illuminate/log": "~5.1",
     "illuminate/events": "~5.1",
     "netresearch/jsonmapper": "0.8.*",
-    "psr/log": "^1.0"
+    "psr/log": "^1.0",
+    "illuminate/database": "5.1.*"
   },
   "require-dev": {
     "phpspec/phpspec": "~2.1@dev"

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Collection;
 use DeSmart\DomainCore\EntityTranslator;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
 trait ConvertsToEntityTrait
 {
@@ -48,6 +49,11 @@ trait ConvertsToEntityTrait
         foreach ($this->relations as $name => $relations) {
             $setterMethod = 'set'.ucfirst($name);
             $mapperMethod = $name.'ToEntity';
+
+            // Pivots shouldn't be converted to entities
+            if (true === $relations instanceof Pivot) {
+                continue;
+            }
 
             if (false === method_exists($entity, $setterMethod)) {
                 continue;
