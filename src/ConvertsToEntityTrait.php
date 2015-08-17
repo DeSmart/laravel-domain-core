@@ -46,9 +46,12 @@ trait ConvertsToEntityTrait
         }
 
         foreach ($this->relations as $name => $relations) {
-            $uppercase = ucfirst($name);
-            $method = 'set'.$uppercase;
+            $setterMethod = 'set'.ucfirst($name);
             $mapperMethod = $name.'ToEntity';
+
+            if (false === method_exists($entity, $setterMethod)) {
+                continue;
+            }
 
             // if there's no custom entity factories use the generic one
             if (false === method_exists($this, $mapperMethod)) {
@@ -58,9 +61,9 @@ trait ConvertsToEntityTrait
             $relations = $this->$mapperMethod($relations, $entity);
 
             if (true === is_array($relations) || true === $relations instanceof \Traversable) {
-                $entity->$method(...$relations);
+                $entity->$setterMethod(...$relations);
             } else {
-                $entity->$method($relations);
+                $entity->$setterMethod($relations);
             }
         }
     }
