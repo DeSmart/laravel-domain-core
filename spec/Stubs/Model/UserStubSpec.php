@@ -101,4 +101,14 @@ class UserStubSpec extends ObjectBehavior
         // it's enough - Pivot shouldnt be casted to entity
         $this->toEntity();
     }
+
+    function it_skips_null_relations()
+    {
+        $this->setRelations([
+            'messages' => null,
+        ]);
+
+        // it's enough :)
+        $this->toEntity();
+    }
 }

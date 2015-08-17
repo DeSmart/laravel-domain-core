@@ -50,12 +50,7 @@ trait ConvertsToEntityTrait
             $setterMethod = 'set'.ucfirst($name);
             $mapperMethod = $name.'ToEntity';
 
-            // Pivots shouldn't be converted to entities
-            if (true === $relations instanceof Pivot) {
-                continue;
-            }
-
-            if (false === method_exists($entity, $setterMethod)) {
+            if (false === $this->isRelationSettableForEntity($name, $relations, $entity)) {
                 continue;
             }
 
@@ -71,6 +66,33 @@ trait ConvertsToEntityTrait
             } else {
                 $entity->$setterMethod($relations);
             }
+        }
+    }
+
+    /**
+     * Test if given relation can be set in entity
+     *
+     * @param string $name name of the relation
+     * @param mixed $relations fetched related record(s)
+     * @param mixed $entity
+     * @return boolean
+     */
+    protected function isRelationSettableForEntity($name, $relations, $entity)
+    {
+
+        if (null === $relations) {
+            return false;
+        }
+
+        // Pivots shouldn't be converted to entities
+        if (true === $relations instanceof Pivot) {
+            return false;
+        }
+
+        $setterMethod = 'set'.ucfirst($name);
+
+        if (false === method_exists($entity, $setterMethod)) {
+            return false;
         }
     }
 
