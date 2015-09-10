@@ -31,6 +31,12 @@ trait ConvertsToEntityTrait
         $entity = $mapper->map($data, new $className);
         $this->mapEntityRelationships($entity);
 
+        // entity was just hydrated
+        // this means that any generated event should be removed
+        if (true === method_exists($entity, 'flushEvents')) {
+            $entity->flushEvents();
+        }
+
         return $entity;
     }
 

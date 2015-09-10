@@ -1,9 +1,12 @@
 <?php namespace DeSmart\DomainCore\Stubs\Entity;
 
 use DeSmart\DomainCore\Stubs\CommentWrapper;
+use DeSmart\DomainCore\Events\EventGenerator;
 
 class UserStubEntity
 {
+
+    use EventGenerator;
 
     /**
      * @var string
@@ -44,6 +47,7 @@ class UserStubEntity
     public function setName($name)
     {
         $this->name = $name;
+        $this->raise('Name changed');
     }
 
     /**

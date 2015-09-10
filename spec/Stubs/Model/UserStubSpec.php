@@ -41,6 +41,14 @@ class UserStubSpec extends ObjectBehavior
         $entity->getLastname()->shouldReturn('Snow');
     }
 
+    function it_flushes_raised_events_after_conversion()
+    {
+        $this->name = 'Jon';
+
+        $entity = $this->toEntity();
+        $entity->releaseEvents()->shouldReturn([]);
+    }
+
     function it_converts_to_entity_from_array_data()
     {
         $entity = $this->toEntity([

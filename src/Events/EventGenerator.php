@@ -31,4 +31,11 @@ trait EventGenerator {
         return $events;
     }
 
+    /**
+     * Remove all raised events
+     */
+    public function flushEvents()
+    {
+        $this->pendingEvents = [];
+    }
 }
