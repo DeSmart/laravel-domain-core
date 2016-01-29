@@ -3,16 +3,16 @@
   "description": "DeSmart core DDD package for Laravel",
   "require": {
     "php": ">=5.6.0",
-    "illuminate/support": "~5.1",
-    "illuminate/container": "~5.1",
-    "illuminate/log": "~5.1",
-    "illuminate/events": "~5.1",
-    "netresearch/jsonmapper": "0.8.*",
+    "illuminate/support": "~5.2",
+    "illuminate/container": "~5.2",
+    "illuminate/log": "~5.2",
+    "illuminate/events": "~5.2",
+    "netresearch/jsonmapper": "0.10.*",
     "psr/log": "^1.0",
-    "illuminate/database": "5.1.*"
+    "illuminate/database": "5.2.*"
   },
   "require-dev": {
-    "phpspec/phpspec": "~2.1@dev"
+    "phpspec/phpspec": "^2.4"
   },
   "license": "MIT",
   "autoload": {
