@@ -31,7 +31,7 @@ One-to-many relations have to represented as type hinted variadic argument in en
 
 ```php
 <?php
-class User extends \\Illuminate\\Database\\Eloquent\\Model
+class User extends \Illuminate\Database\Eloquent\Model
 {
     use ConvertsToEntityTrait;
 
@@ -116,7 +116,7 @@ class UserEntitiesRepository
     }
 }
 
-class WithIdsCriterion implements \\DeSmart\\DomainCore\\Repository\\Criteria\\CriterionInterface
+class WithIdsCriterion implements \DeSmart\DomainCore\Repository\Criteria\CriterionInterface
 {
     /** @var array */
     protected $ids;
@@ -149,7 +149,7 @@ class WithIdsCriterion implements \\DeSmart\\DomainCore\\Repository\\Criteria\\C
     }
 }
 
-$criteriaCollection = new \\DeSmart\\DomainCore\\Repository\\Criteria\\CriteriaCollection();
+$criteriaCollection = new \DeSmart\DomainCore\Repository\Criteria\CriteriaCollection();
 $usersRepository = new UsersRepository(new User());
 $criteriaCollection->add(
     new WithIdsCriterion([1, 2, 3])
