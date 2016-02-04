@@ -31,7 +31,7 @@ One-to-many relations have to represented as type hinted variadic argument in en
 
 ```php
 <?php
-class User
+class User extends \Illuminate\Database\Eloquent\Model
 {
     use ConvertsToEntityTrait;
 
@@ -74,4 +74,87 @@ class UserEntity
         $this->avatar = $avatar;
     }
 }
+```
+
+### Querying Collections
+
+#### Example
+```php
+<?php
+
+class UserEntitiesRepository
+{
+    use ConvertsCollectionToEntitiesTrait;
+
+    /** @var User */
+    private $query;
+    
+    public function __construct(User $user)
+    {
+        $this->query = $user;
+    }
+    
+    /**
+     * @param CriteriaCollectionInterface $criteriaCollection
+     * @return UserEntity[]
+     */
+    public function getAllMatching(CriteriaCollectionInterface $criteriaCollection) 
+    {
+        /** @var \Illuminate\Database\Eloquent\Builder $builder */
+        $builder = $this->getQueryBuilder();
+
+        $queryBuilder = $builder->getQuery();
+        $queryBuilder->select($this->query->getTable() . '.*');
+
+        foreach ($criteriaCollection->getAll() as $criterion) {
+            $criterion->apply($builder);
+        }
+
+        $collection = $builder->get();
+
+        return $this->convertCollectionToEntities($collection);
+    }
+}
+
+class WithIdsCriterion implements \DeSmart\DomainCore\Repository\Criteria\CriterionInterface
+{
+    /** @var array */
+    protected $ids;
+
+    /**
+     * @param array $ids
+     */
+    public function __construct(array $ids)
+    {
+        $this->ids = $ids;
+    }
+
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return mixed
+     */
+    public function apply($query)
+    {
+        $idsList = array_map(function ($id) {
+            return "'{$id}'";
+        }, $this->ids);
+
+        $query->whereIn($query->getModel()->getQualifiedKeyName(), $this->ids);
+
+        if (false === empty($idsList)) {
+            $query->orderBy(\DB::raw("FIELD ({$query->getModel()->getQualifiedKeyName()}," . implode(',', $idsList) . ")"));
+        }
+
+        return $query;
+    }
+}
+
+$criteriaCollection = new \DeSmart\DomainCore\Repository\Criteria\CriteriaCollection();
+$usersRepository = new UsersRepository(new User());
+$criteriaCollection->add(
+    new WithIdsCriterion([1, 2, 3])
+);
+
+$users = $usersRepository->getAllMatchingCriteria($criteriaCollection);
+
 ```
